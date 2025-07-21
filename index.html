@@ -3,33 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-    </style>
+    <title>Ari's ETF Competition - Summer 2025 | Palo Alto Investors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h1>GitHub Pages Test</h1>
-        <p>If you can see this, the build is working!</p>
-        <p>This is a test to isolate the build issue.</p>
+        <header class="header">
+            <h1>Ari's ETF Competition</h1>
+            <div class="subtitle">
+                <span>Summer 2025 Intern Challenge | Palo Alto Investors</span>
+            </div>
+            <div class="competition-stats">
+                <span>$1M Weekly Budget</span>
+            </div>
+        </header>
+
+        <!-- Main Navigation -->
+        <section class="main-navigation">
+            <div class="nav-buttons">
+                <button class="nav-btn active" data-page="home">🏠 Home</button>
+                <button class="nav-btn" data-page="week1">📈 Week 1: Jun 23-27</button>
+                <button class="nav-btn" data-page="week2">📊 Week 2: Jun 30-Jul 3</button>
+                <button class="nav-btn" data-page="week3">📉 Week 3: Jul 8-11</button>
+                <button class="nav-btn" data-page="week4">🚀 Week 4: Jul 15-18</button>
+            </div>
+        </section>
+
+        <!-- Home Page -->
+        <section class="page-content active" id="home-page">
+            <div class="home-content">
+                <div class="mission-statement">
+                    <h2>The Challenge</h2>
+                    <p>A friendly competition between interns at Palo Alto Investors to pick three ETFs every week and compare performance. Each participant receives a $1,000,000 virtual budget to allocate across their chosen ETFs.</p>
+                    
+                    <div class="challenge-rules">
+                        <h3>Competition Rules</h3>
+                        <ul>
+                            <li>🎯 Pick 3 ETFs each week</li>
+                            <li>💰 $1,000,000 weekly budget</li>
+                            <li>📅 Week-long investment periods</li>
+                            <li>📊 Performance tracked daily</li>
+                            <li>🏆 Best weekly performance wins</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="participant-intro">
+                    <h2>Meet the Competitor</h2>
+                    <div class="participant-card">
+                        <h3>Ari Krane</h3>
+                        <p><strong>Position:</strong> Summer Intern, Palo Alto Investors</p>
+                        <p><strong>Strategy:</strong> Tech-focused with emerging sectors exposure</p>
+                        <p><strong>Specialties:</strong> Blockchain, AI, Cybersecurity, Traditional Tech</p>
+                    </div>
+                </div>
+
+                <div class="weekly-summary">
+                    <h2>4-Week Performance Overview</h2>
+                    <div class="week-cards">
+                        <div class="week-card week1-card">
+                            <h4>Week 1: Jun 23-27</h4>
+                            <p class="week-etfs">VOO • HACK • EIS</p>
+                            <p class="week-return" id="week1-return">+$36,363.50 (+3.64%)</p>
+                            <div class="week-badge best">🏆 Best Week</div>
+                        </div>
+                        <div class="week-card week2-card">
+                            <h4>Week 2: Jun 30-Jul 3</h4>
+                            <p class="week-etfs">QQQ • IBIT • URA</p>
+                            <p class="week-return" id="week2-return">+$4,616.34 (+0.46%)</p>
+                            <div class="week-badge">Steady</div>
+                        </div>
+                        <div class="week-card week3-card">
+                            <h4>Week 3: Jul 8-11</h4>
+                            <p class="week-etfs">BLCN • IYW • AIQ</p>
+                            <p class="week-return" id="week3-return">+$5,356.83 (+0.54%)</p>
+                            <div class="week-badge">Recovery</div>
+                        </div>
+                        <div class="week-card week4-card">
+                            <h4>Week 4: Jul 15-18</h4>
+                            <p class="week-etfs">BLCN • IYW • AIQ</p>
+                            <p class="week-return" id="week4-return">+$15,127.24 (+1.51%)</p>
+                            <div class="week-badge strong">Strong Finish</div>
+                        </div>
+                    </div>
+                    
+                    <div class="total-performance">
+                        <h3>Total Competition Performance</h3>
+                        <div class="total-stats">
+                            <span class="total-return">+$61,463.91</span>
+                            <span class="total-percentage">(+1.54% Average)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Week Templates (will be populated by JavaScript) -->
+        <section class="page-content" id="week1-page">
+            <div id="week1-content"></div>
+        </section>
+        
+        <section class="page-content" id="week2-page">
+            <div id="week2-content"></div>
+        </section>
+        
+        <section class="page-content" id="week3-page">
+            <div id="week3-content"></div>
+        </section>
+        
+        <section class="page-content" id="week4-page">
+            <div id="week4-content"></div>
+        </section>
+
+        <footer class="footer">
+            <p>🏢 Palo Alto Investors • Summer 2025 Intern Competition • Data from actual ETF performance</p>
+        </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html> 
