@@ -4,7 +4,7 @@ A dynamic website showcasing a 4-week ETF investment competition between interns
 
 ## Competition Overview
 
-- **Participant**: Ari Crane, Summer Intern
+- **Participant**: Ari Krane, Summer Intern
 - **Format**: 4-week competition with $1,000,000 weekly budget
 - **Period**: June 23 - July 18, 2025
 - **Total ETFs**: 10 different ETFs across 4 weeks
