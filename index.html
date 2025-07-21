@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETF Portfolio Performance Analysis - July 15-18, 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>ETF Portfolio Performance Analysis</h1>
+            <div class="date-range">
+                <span>Investment Period: July 15, 2025 - July 18, 2025</span>
+            </div>
+            <div class="total-investment">
+                <span>Total Investment: $1,000,000</span>
+            </div>
+        </header>
+
+        <section class="portfolio-summary">
+            <h2>Portfolio Overview</h2>
+            <div class="summary-cards">
+                <div class="summary-card total-return">
+                    <h3>Total Portfolio Return</h3>
+                    <div class="return-value" id="totalReturn">$0</div>
+                    <div class="return-percentage" id="totalReturnPercent">0%</div>
+                </div>
+                <div class="summary-card best-performer">
+                    <h3>Best Performer</h3>
+                    <div class="performer-etf" id="bestPerformer">-</div>
+                    <div class="performer-return" id="bestPerformerReturn">-</div>
+                </div>
+                <div class="summary-card worst-performer">
+                    <h3>Worst Performer</h3>
+                    <div class="performer-etf" id="worstPerformer">-</div>
+                    <div class="performer-return" id="worstPerformerReturn">-</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio-chart">
+            <h2>Portfolio Performance Timeline</h2>
+            <div class="chart-container">
+                <canvas id="portfolioChart"></canvas>
+            </div>
+        </section>
+
+        <section class="etf-navigation">
+            <h2>Individual ETF Analysis</h2>
+            <div class="nav-buttons">
+                <button class="nav-btn active" data-etf="overview">Portfolio Overview</button>
+                <button class="nav-btn" data-etf="blcn">BLCN - Blockchain ($400,000)</button>
+                <button class="nav-btn" data-etf="iyw">IYW - Technology ($300,000)</button>
+                <button class="nav-btn" data-etf="aiq">AIQ - AI ($300,000)</button>
+            </div>
+        </section>
+
+        <section class="etf-content">
+            <!-- Overview Section -->
+            <div class="etf-section active" id="overview-section">
+                <div class="overview-content">
+                    <h3>Investment Summary</h3>
+                    <div class="investment-grid">
+                        <div class="investment-item">
+                            <h4>BLCN - Reality Shares Nasdaq NexGen Economy ETF</h4>
+                            <p><strong>Investment:</strong> $400,000</p>
+                            <p><strong>Focus:</strong> Blockchain Technology</p>
+                            <p><strong>Performance:</strong> <span id="overview-blcn-perf">Loading...</span></p>
+                        </div>
+                        <div class="investment-item">
+                            <h4>IYW - iShares U.S. Technology ETF</h4>
+                            <p><strong>Investment:</strong> $300,000</p>
+                            <p><strong>Focus:</strong> Broad Technology Sector</p>
+                            <p><strong>Performance:</strong> <span id="overview-iyw-perf">Loading...</span></p>
+                        </div>
+                        <div class="investment-item">
+                            <h4>AIQ - Global X Artificial Intelligence & Technology ETF</h4>
+                            <p><strong>Investment:</strong> $300,000</p>
+                            <p><strong>Focus:</strong> Artificial Intelligence</p>
+                            <p><strong>Performance:</strong> <span id="overview-aiq-perf">Loading...</span></p>
+                        </div>
+                    </div>
+                    <div class="market-summary" id="marketSummary">
+                        <h3>Key Insights</h3>
+                        <p>Loading portfolio analysis...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BLCN Section -->
+            <div class="etf-section" id="blcn-section">
+                <div class="etf-header">
+                    <h3>BLCN - Reality Shares Nasdaq NexGen Economy ETF</h3>
+                    <div class="investment-amount">Investment: $400,000</div>
+                </div>
+                <div class="etf-content-grid">
+                    <div class="etf-chart-container">
+                        <canvas id="blcnChart"></canvas>
+                    </div>
+                    <div class="etf-metrics">
+                        <div class="performance-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Return:</span>
+                                <span class="metric-value" id="blcnReturn">$0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Percentage:</span>
+                                <span class="metric-value" id="blcnPercent">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Final Value:</span>
+                                <span class="metric-value" id="blcnFinalValue">$400,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis" id="blcnAnalysis">
+                    <h4>Performance Analysis</h4>
+                    <p>Loading analysis...</p>
+                </div>
+            </div>
+
+            <!-- IYW Section -->
+            <div class="etf-section" id="iyw-section">
+                <div class="etf-header">
+                    <h3>IYW - iShares U.S. Technology ETF</h3>
+                    <div class="investment-amount">Investment: $300,000</div>
+                </div>
+                <div class="etf-content-grid">
+                    <div class="etf-chart-container">
+                        <canvas id="iywChart"></canvas>
+                    </div>
+                    <div class="etf-metrics">
+                        <div class="performance-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Return:</span>
+                                <span class="metric-value" id="iywReturn">$0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Percentage:</span>
+                                <span class="metric-value" id="iywPercent">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Final Value:</span>
+                                <span class="metric-value" id="iywFinalValue">$300,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis" id="iywAnalysis">
+                    <h4>Performance Analysis</h4>
+                    <p>Loading analysis...</p>
+                </div>
+            </div>
+
+            <!-- AIQ Section -->
+            <div class="etf-section" id="aiq-section">
+                <div class="etf-header">
+                    <h3>AIQ - Global X Artificial Intelligence & Technology ETF</h3>
+                    <div class="investment-amount">Investment: $300,000</div>
+                </div>
+                <div class="etf-content-grid">
+                    <div class="etf-chart-container">
+                        <canvas id="aiqChart"></canvas>
+                    </div>
+                    <div class="etf-metrics">
+                        <div class="performance-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Return:</span>
+                                <span class="metric-value" id="aiqReturn">$0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Percentage:</span>
+                                <span class="metric-value" id="aiqPercent">0%</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Final Value:</span>
+                                <span class="metric-value" id="aiqFinalValue">$300,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="analysis" id="aiqAnalysis">
+                    <h4>Performance Analysis</h4>
+                    <p>Loading analysis...</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Data from actual investment performance for the period July 15-18, 2025. Click buttons above to explore individual ETF analysis.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
