@@ -1,190 +1,444 @@
-// ETF Portfolio Analysis Application - Using Real Investment Data
-class ETFPortfolioAnalyzer {
+// ETF Competition Application - Multi-Week Analysis
+class ETFCompetitionAnalyzer {
     constructor() {
-        this.investments = {
-            BLCN: { 
-                amount: 400000, 
-                openPrice: 24.86, 
-                closePrice: 25.51,
-                gainPercent: 1.0261,
-                finalValue: 404104.59,
-                shares: 0 
+        // All weeks data based on the provided performance tables
+        this.weeksData = {
+            week1: {
+                title: "Week 1: June 23-27, 2025",
+                dateRange: "Jun 23-27",
+                totalInvestment: 1000000,
+                totalFinalValue: 1036363.50,
+                totalGain: 36363.50,
+                investments: {
+                    VOO: { 
+                        amount: 450000, 
+                        openPrice: 548.66, 
+                        closePrice: 566.95,
+                        gainPercent: 3.33,
+                        finalValue: 465001.09,
+                        name: "Vanguard S&P 500 ETF"
+                    },
+                    HACK: { 
+                        amount: 300000, 
+                        openPrice: 82.52, 
+                        closePrice: 85.20,
+                        gainPercent: 3.25,
+                        finalValue: 309743.09,
+                        name: "Amplify Cybersecurity ETF"
+                    },
+                    EIS: { 
+                        amount: 250000, 
+                        openPrice: 88.00, 
+                        closePrice: 92.09,
+                        gainPercent: 4.65,
+                        finalValue: 261619.32,
+                        name: "iShares MSCI Israel ETF"
+                    }
+                },
+                actualPrices: {
+                    VOO: [553.36, 559.44, 563.70, 566.95],
+                    HACK: [84.15, 84.45, 85.00, 85.20],
+                    EIS: [89.34, 91.74, 92.07, 92.09]
+                }
             },
-            IYW: { 
-                amount: 300000, 
-                openPrice: 177.33, 
-                closePrice: 178.72,
-                gainPercent: 1.0078,
-                finalValue: 303023.52,
-                shares: 0 
+            week2: {
+                title: "Week 2: June 30-July 3, 2025",
+                dateRange: "Jun 30-Jul 3",
+                totalInvestment: 1000000,
+                totalFinalValue: 1004616.34,
+                totalGain: 4616.34,
+                investments: {
+                    QQQ: { 
+                        amount: 500000, 
+                        openPrice: 551.26, 
+                        closePrice: 556.22,
+                        gainPercent: 0.90,
+                        finalValue: 504498.78,
+                        name: "Invesco QQQ Trust"
+                    },
+                    IBIT: { 
+                        amount: 300000, 
+                        openPrice: 61.27, 
+                        closePrice: 62.19,
+                        gainPercent: 1.50,
+                        finalValue: 304504.65,
+                        name: "iShares Bitcoin Trust ETF"
+                    },
+                    URA: { 
+                        amount: 200000, 
+                        openPrice: 38.75, 
+                        closePrice: 37.90,
+                        gainPercent: -2.19,
+                        finalValue: 195612.90,
+                        name: "Global X Uranium ETF"
+                    }
+                },
+                actualPrices: {
+                    QQQ: [551.64, 546.99, 550.80, 556.22],
+                    IBIT: [61.21, 59.84, 62.42, 62.19],
+                    URA: [38.61, 37.42, 37.71, 37.90]
+                }
             },
-            AIQ: { 
-                amount: 300000, 
-                openPrice: 44.02, 
-                closePrice: 44.36,
-                gainPercent: 1.0077,
-                finalValue: 303023.17,
-                shares: 0 
+            week3: {
+                title: "Week 3: July 8-11, 2025",
+                dateRange: "Jul 8-11",
+                totalInvestment: 1000000,
+                totalFinalValue: 1005356.83,
+                totalGain: 5356.83,
+                investments: {
+                    BLCN: { 
+                        amount: 400000, 
+                        openPrice: 24.01, 
+                        closePrice: 24.53,
+                        gainPercent: 2.17,
+                        finalValue: 408663.06,
+                        name: "Siren Nasdaq NexGen Economy ETF"
+                    },
+                    IYW: { 
+                        amount: 300000, 
+                        openPrice: 175.01, 
+                        closePrice: 175.08,
+                        gainPercent: 0.04,
+                        finalValue: 300119.99,
+                        name: "iShares U.S. Technology ETF"
+                    },
+                    AIQ: { 
+                        amount: 300000, 
+                        openPrice: 43.78, 
+                        closePrice: 43.28,
+                        gainPercent: -1.14,
+                        finalValue: 296573.78,
+                        name: "Global X Artificial Intelligence & Technology ETF"
+                    }
+                },
+                actualPrices: {
+                    BLCN: [24.36, 24.35, 24.45, 24.53],
+                    IYW: [174.87, 176.30, 175.72, 175.08],
+                    AIQ: [43.68, 43.77, 43.65, 43.28]
+                }
+            },
+            week4: {
+                title: "Week 4: July 15-18, 2025",
+                dateRange: "Jul 15-18",
+                totalInvestment: 1000000,
+                totalFinalValue: 1015127.24,
+                totalGain: 15127.24,
+                investments: {
+                    BLCN: { 
+                        amount: 400000, 
+                        openPrice: 24.86, 
+                        closePrice: 25.51,
+                        gainPercent: 2.61,
+                        finalValue: 410458.57,
+                        name: "Siren Nasdaq NexGen Economy ETF"
+                    },
+                    IYW: { 
+                        amount: 300000, 
+                        openPrice: 177.33, 
+                        closePrice: 178.72,
+                        gainPercent: 0.78,
+                        finalValue: 302351.55,
+                        name: "iShares U.S. Technology ETF"
+                    },
+                    AIQ: { 
+                        amount: 300000, 
+                        openPrice: 44.02, 
+                        closePrice: 44.36,
+                        gainPercent: 0.77,
+                        finalValue: 302317.13,
+                        name: "Global X Artificial Intelligence & Technology ETF"
+                    }
+                },
+                actualPrices: {
+                    BLCN: [24.58, 24.80, 25.30, 25.51],
+                    IYW: [176.77, 177.14, 178.69, 178.72],
+                    AIQ: [43.79, 43.98, 44.43, 44.36]
+                }
             }
         };
-        
-        this.dates = ['July 15', 'July 16', 'July 17', 'July 18'];
-        this.etfData = {};
-        this.portfolioPerformance = {};
-        
-        // Total portfolio performance
-        this.totalInvestment = 1000000;
-        this.totalFinalValue = 1010151.27;
-        this.totalGain = 10151.27;
+
+        this.dates = ['Day 1', 'Day 2', 'Day 3', 'Day 4'];
+        this.currentWeek = null;
+        this.currentCharts = {};
         
         this.init();
     }
 
     init() {
-        this.calculateShares();
-        this.generateETFData();
-        this.calculatePerformance();
-        this.updateUI();
-        this.createCharts();
-        this.generateAnalysis();
+        this.setupNavigation();
+        this.generateWeekPages();
     }
 
-    calculateShares() {
-        Object.keys(this.investments).forEach(etf => {
-            this.investments[etf].shares = this.investments[etf].amount / this.investments[etf].openPrice;
+    setupNavigation() {
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const pageContents = document.querySelectorAll('.page-content');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetPage = button.getAttribute('data-page');
+                
+                // Remove active class from all buttons and pages
+                navButtons.forEach(btn => btn.classList.remove('active'));
+                pageContents.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show target page
+                const targetPageElement = document.getElementById(`${targetPage}-page`);
+                if (targetPageElement) {
+                    targetPageElement.classList.add('active');
+                    
+                    // If it's a week page, load the week data
+                    if (targetPage.startsWith('week')) {
+                        this.loadWeekData(targetPage);
+                    }
+                }
+            });
         });
     }
 
-    generateETFData() {
-        // Use actual Yahoo Finance daily closing prices
-        const actualPriceData = {
-            BLCN: [24.58, 24.80, 25.30, 25.51], // Jul 15-18 closing prices
-            IYW: [176.77, 177.14, 178.69, 178.72], // Jul 15-18 closing prices  
-            AIQ: [43.79, 43.98, 44.43, 44.36] // Jul 15-18 closing prices
-        };
-        
-        const actualVolumeData = {
-            BLCN: [285000, 312000, 445000, 398000], // Estimated realistic volumes
-            IYW: [1250000, 1180000, 1420000, 1390000], // Higher volume for larger ETF
-            AIQ: [320000, 295000, 380000, 365000] // Mid-range volumes
-        };
-
-        Object.keys(this.investments).forEach(etf => {
-            const investment = this.investments[etf];
+    generateWeekPages() {
+        // Generate content for each week
+        Object.keys(this.weeksData).forEach(weekKey => {
+            const weekData = this.weeksData[weekKey];
+            const pageElement = document.getElementById(`${weekKey}-content`);
             
-            this.etfData[etf] = {
-                prices: actualPriceData[etf],
-                volumes: actualVolumeData[etf],
-                initialPrice: investment.openPrice,
-                finalPrice: investment.closePrice
-            };
-        });
-    }
-
-    calculatePerformance() {
-        const etfPerformances = {};
-
-        Object.keys(this.investments).forEach(etf => {
-            const investment = this.investments[etf];
-            const returnAmount = investment.finalValue - investment.amount;
-            const returnPercentage = investment.gainPercent;
-
-            etfPerformances[etf] = {
-                initialValue: investment.amount,
-                currentValue: investment.finalValue,
-                returnAmount: returnAmount,
-                returnPercentage: returnPercentage,
-                shares: investment.shares,
-                initialPrice: investment.openPrice,
-                finalPrice: investment.closePrice
-            };
-        });
-
-        const totalReturnPercentage = (this.totalGain / this.totalInvestment) * 100;
-
-        // Find best and worst performers
-        const performers = Object.entries(etfPerformances)
-            .sort((a, b) => b[1].returnPercentage - a[1].returnPercentage);
-
-        this.portfolioPerformance = {
-            total: {
-                investment: this.totalInvestment,
-                currentValue: this.totalFinalValue,
-                returnAmount: this.totalGain,
-                returnPercentage: totalReturnPercentage
-            },
-            etfs: etfPerformances,
-            bestPerformer: performers[0],
-            worstPerformer: performers[performers.length - 1]
-        };
-    }
-
-    updateUI() {
-        const { total, bestPerformer, worstPerformer, etfs } = this.portfolioPerformance;
-
-        // Update portfolio summary
-        document.getElementById('totalReturn').textContent = this.formatCurrency(total.returnAmount);
-        document.getElementById('totalReturnPercent').textContent = this.formatPercentage(total.returnPercentage);
-        
-        document.getElementById('bestPerformer').textContent = bestPerformer[0];
-        document.getElementById('bestPerformerReturn').textContent = this.formatPercentage(bestPerformer[1].returnPercentage);
-        
-        document.getElementById('worstPerformer').textContent = worstPerformer[0];
-        document.getElementById('worstPerformerReturn').textContent = this.formatPercentage(worstPerformer[1].returnPercentage);
-
-        // Update individual ETF metrics
-        Object.keys(etfs).forEach(etf => {
-            const performance = etfs[etf];
-            const etfLower = etf.toLowerCase();
-            
-            document.getElementById(`${etfLower}Return`).textContent = this.formatCurrency(performance.returnAmount);
-            document.getElementById(`${etfLower}Percent`).textContent = this.formatPercentage(performance.returnPercentage);
-            document.getElementById(`${etfLower}FinalValue`).textContent = this.formatCurrency(performance.currentValue);
-
-            // Add color classes for positive/negative returns
-            const returnElement = document.getElementById(`${etfLower}Return`);
-            const percentElement = document.getElementById(`${etfLower}Percent`);
-            
-            if (performance.returnAmount >= 0) {
-                returnElement.classList.add('positive');
-                percentElement.classList.add('positive');
-            } else {
-                returnElement.classList.add('negative');
-                percentElement.classList.add('negative');
+            if (pageElement) {
+                pageElement.innerHTML = this.generateWeekHTML(weekKey, weekData);
             }
         });
-
-        // Update summary card colors (all positive in this case)
-        const totalReturnCard = document.querySelector('.total-return');
-        totalReturnCard.style.background = 'linear-gradient(135deg, #52c234 0%, #061700 100%)';
     }
 
-    createCharts() {
-        this.createPortfolioChart();
-        this.createIndividualETFCharts();
-    }
-
-    createPortfolioChart() {
-        const ctx = document.getElementById('portfolioChart').getContext('2d');
+    generateWeekHTML(weekKey, weekData) {
+        const etfKeys = Object.keys(weekData.investments);
         
-        // Calculate actual portfolio values for each day
+        return `
+            <div class="week-header">
+                <h2>${weekData.title}</h2>
+                <div class="week-stats">
+                    <span>Total Investment: $${weekData.totalInvestment.toLocaleString()}</span>
+                    <span>Final Value: $${weekData.totalFinalValue.toLocaleString()}</span>
+                    <span class="week-gain ${weekData.totalGain >= 0 ? 'positive' : 'negative'}">
+                        ${weekData.totalGain >= 0 ? '+' : ''}$${Math.abs(weekData.totalGain).toLocaleString()}
+                    </span>
+                </div>
+            </div>
+
+            <section class="portfolio-summary">
+                <h3>Week ${weekKey.slice(-1)} Performance Overview</h3>
+                <div class="summary-cards">
+                    <div class="summary-card total-return">
+                        <h4>Total Portfolio Return</h4>
+                        <div class="return-value">${this.formatCurrency(weekData.totalGain)}</div>
+                        <div class="return-percentage">${this.formatPercentage((weekData.totalGain / weekData.totalInvestment) * 100)}</div>
+                    </div>
+                    <div class="summary-card best-performer">
+                        <h4>Best Performer</h4>
+                        <div class="performer-etf" id="${weekKey}-bestPerformer">-</div>
+                        <div class="performer-return" id="${weekKey}-bestPerformerReturn">-</div>
+                    </div>
+                    <div class="summary-card worst-performer">
+                        <h4>Worst Performer</h4>
+                        <div class="performer-etf" id="${weekKey}-worstPerformer">-</div>
+                        <div class="performer-return" id="${weekKey}-worstPerformerReturn">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-chart">
+                <h3>Portfolio Performance Timeline</h3>
+                <div class="chart-container">
+                    <canvas id="${weekKey}-portfolioChart"></canvas>
+                </div>
+            </section>
+
+            <section class="etf-navigation">
+                <h3>Individual ETF Analysis</h3>
+                <div class="nav-buttons">
+                    <button class="nav-btn active" data-etf="overview" data-week="${weekKey}">Portfolio Overview</button>
+                    ${etfKeys.map(etf => `
+                        <button class="nav-btn" data-etf="${etf.toLowerCase()}" data-week="${weekKey}">
+                            ${etf} - ${weekData.investments[etf].name.split(' ').slice(-1)[0]} ($${(weekData.investments[etf].amount/1000).toFixed(0)}K)
+                        </button>
+                    `).join('')}
+                </div>
+            </section>
+
+            <section class="etf-content">
+                <div class="etf-section active" id="${weekKey}-overview-section">
+                    <div class="overview-content">
+                        <h4>Investment Summary</h4>
+                        <div class="investment-grid">
+                            ${etfKeys.map(etf => {
+                                const investment = weekData.investments[etf];
+                                const returnAmount = investment.finalValue - investment.amount;
+                                return `
+                                    <div class="investment-item">
+                                        <h5>${etf} - ${investment.name}</h5>
+                                        <p><strong>Investment:</strong> $${investment.amount.toLocaleString()}</p>
+                                        <p><strong>Performance:</strong> 
+                                            <span class="performance-value ${returnAmount >= 0 ? 'positive' : 'negative'}">
+                                                ${this.formatCurrency(returnAmount)} (${this.formatPercentage(investment.gainPercent)})
+                                            </span>
+                                        </p>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                        <div class="market-summary">
+                            <h4>Week Analysis</h4>
+                            <div id="${weekKey}-weekAnalysis">Loading analysis...</div>
+                        </div>
+                    </div>
+                </div>
+
+                ${etfKeys.map(etf => `
+                    <div class="etf-section" id="${weekKey}-${etf.toLowerCase()}-section">
+                        <div class="etf-header">
+                            <h4>${etf} - ${weekData.investments[etf].name}</h4>
+                            <div class="investment-amount">Investment: $${weekData.investments[etf].amount.toLocaleString()}</div>
+                        </div>
+                        <div class="etf-content-grid">
+                            <div class="etf-chart-container">
+                                <canvas id="${weekKey}-${etf.toLowerCase()}Chart"></canvas>
+                            </div>
+                            <div class="etf-metrics">
+                                <div class="performance-metrics">
+                                    <div class="metric">
+                                        <span class="metric-label">Return:</span>
+                                        <span class="metric-value ${(weekData.investments[etf].finalValue - weekData.investments[etf].amount) >= 0 ? 'positive' : 'negative'}">
+                                            ${this.formatCurrency(weekData.investments[etf].finalValue - weekData.investments[etf].amount)}
+                                        </span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Percentage:</span>
+                                        <span class="metric-value ${weekData.investments[etf].gainPercent >= 0 ? 'positive' : 'negative'}">
+                                            ${this.formatPercentage(weekData.investments[etf].gainPercent)}
+                                        </span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="metric-label">Final Value:</span>
+                                        <span class="metric-value">${this.formatCurrency(weekData.investments[etf].finalValue)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analysis" id="${weekKey}-${etf.toLowerCase()}Analysis">
+                            <h5>Performance Analysis</h5>
+                            <p>Loading detailed analysis...</p>
+                        </div>
+                    </div>
+                `).join('')}
+            </section>
+        `;
+    }
+
+    loadWeekData(weekKey) {
+        const weekData = this.weeksData[weekKey];
+        if (!weekData) return;
+
+        this.currentWeek = weekKey;
+        
+        // Clear existing charts
+        Object.values(this.currentCharts).forEach(chart => {
+            if (chart && typeof chart.destroy === 'function') {
+                chart.destroy();
+            }
+        });
+        this.currentCharts = {};
+
+        // Set up week-specific navigation
+        setTimeout(() => {
+            this.setupWeekNavigation(weekKey);
+            this.updateWeekSummary(weekKey, weekData);
+            this.createWeekCharts(weekKey, weekData);
+            this.generateWeekAnalysis(weekKey, weekData);
+        }, 100);
+    }
+
+    setupWeekNavigation(weekKey) {
+        const weekNavButtons = document.querySelectorAll(`[data-week="${weekKey}"]`);
+        const weekSections = document.querySelectorAll(`#${weekKey}-page .etf-section`);
+
+        weekNavButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetEtf = button.getAttribute('data-etf');
+                
+                // Remove active class from week nav buttons
+                weekNavButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Hide all week sections
+                weekSections.forEach(section => section.classList.remove('active'));
+                
+                // Show target section
+                const targetSection = document.getElementById(`${weekKey}-${targetEtf}-section`);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+            });
+        });
+    }
+
+    updateWeekSummary(weekKey, weekData) {
+        const etfPerformances = Object.entries(weekData.investments).map(([etf, data]) => ({
+            etf,
+            returnPercentage: data.gainPercent
+        }));
+
+        // Sort by performance
+        etfPerformances.sort((a, b) => b.returnPercentage - a.returnPercentage);
+
+        const bestPerformer = etfPerformances[0];
+        const worstPerformer = etfPerformances[etfPerformances.length - 1];
+
+        // Update best/worst performer displays
+        const bestElement = document.getElementById(`${weekKey}-bestPerformer`);
+        const bestReturnElement = document.getElementById(`${weekKey}-bestPerformerReturn`);
+        const worstElement = document.getElementById(`${weekKey}-worstPerformer`);
+        const worstReturnElement = document.getElementById(`${weekKey}-worstPerformerReturn`);
+
+        if (bestElement && bestReturnElement) {
+            bestElement.textContent = bestPerformer.etf;
+            bestReturnElement.textContent = this.formatPercentage(bestPerformer.returnPercentage);
+        }
+
+        if (worstElement && worstReturnElement) {
+            worstElement.textContent = worstPerformer.etf;
+            worstReturnElement.textContent = this.formatPercentage(worstPerformer.returnPercentage);
+        }
+    }
+
+    createWeekCharts(weekKey, weekData) {
+        this.createWeekPortfolioChart(weekKey, weekData);
+        this.createWeekETFCharts(weekKey, weekData);
+    }
+
+    createWeekPortfolioChart(weekKey, weekData) {
+        const ctx = document.getElementById(`${weekKey}-portfolioChart`);
+        if (!ctx) return;
+
         const portfolioValues = this.dates.map((date, index) => {
             let totalValue = 0;
-            Object.keys(this.investments).forEach(etf => {
-                const shares = this.investments[etf].shares;
-                const price = this.etfData[etf].prices[index];
+            Object.keys(weekData.investments).forEach(etf => {
+                const investment = weekData.investments[etf];
+                const shares = investment.amount / investment.openPrice;
+                const price = weekData.actualPrices[etf][index];
                 totalValue += shares * price;
             });
             return totalValue;
         });
 
-        // Create gradient for the chart
-        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        // Create gradient
+        const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 400);
         gradient.addColorStop(0, 'rgba(102, 126, 234, 0.3)');
         gradient.addColorStop(0.5, 'rgba(102, 126, 234, 0.1)');
         gradient.addColorStop(1, 'rgba(102, 126, 234, 0.02)');
 
-        new Chart(ctx, {
+        this.currentCharts[`${weekKey}-portfolio`] = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: this.dates,
@@ -200,31 +454,18 @@ class ETFPortfolioAnalyzer {
                     pointBorderColor: '#ffffff',
                     pointBorderWidth: 3,
                     pointRadius: 8,
-                    pointHoverRadius: 12,
-                    pointHoverBorderWidth: 4,
-                    shadowColor: 'rgba(102, 126, 234, 0.3)',
-                    shadowBlur: 10
+                    pointHoverRadius: 12
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                interaction: {
-                    intersect: false,
-                    mode: 'index'
-                },
                 plugins: {
-                    legend: {
-                        display: false
-                    },
+                    legend: { display: false },
                     title: {
                         display: true,
-                        text: 'Portfolio Value Over Time',
-                        font: {
-                            size: 18,
-                            weight: '700',
-                            family: 'Inter'
-                        },
+                        text: `${weekData.title} Portfolio Performance`,
+                        font: { size: 18, weight: '700', family: 'Inter' },
                         color: '#2c3e50',
                         padding: 20
                     },
@@ -250,68 +491,46 @@ class ETFPortfolioAnalyzer {
                             callback: function(value) {
                                 return '$' + (value / 1000).toFixed(0) + 'K';
                             },
-                            color: '#5a6c7d',
-                            font: {
-                                size: 12,
-                                weight: '500'
-                            }
+                            color: '#5a6c7d'
                         },
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.08)',
-                            drawBorder: false
-                        }
+                        grid: { color: 'rgba(0, 0, 0, 0.08)', drawBorder: false }
                     },
                     x: {
-                        ticks: {
-                            color: '#5a6c7d',
-                            font: {
-                                size: 12,
-                                weight: '500'
-                            }
-                        },
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.08)',
-                            drawBorder: false
-                        }
-                    }
-                },
-                elements: {
-                    point: {
-                        hoverRadius: 12
+                        ticks: { color: '#5a6c7d' },
+                        grid: { color: 'rgba(0, 0, 0, 0.08)', drawBorder: false }
                     }
                 }
             }
         });
     }
 
-    createIndividualETFCharts() {
+    createWeekETFCharts(weekKey, weekData) {
         const colors = {
-            BLCN: {
-                primary: '#e74c3c',
-                gradient: ['rgba(231, 76, 60, 0.3)', 'rgba(231, 76, 60, 0.1)', 'rgba(231, 76, 60, 0.02)']
-            },
-            IYW: {
-                primary: '#2ecc71',
-                gradient: ['rgba(46, 204, 113, 0.3)', 'rgba(46, 204, 113, 0.1)', 'rgba(46, 204, 113, 0.02)']
-            },
-            AIQ: {
-                primary: '#3498db',
-                gradient: ['rgba(52, 152, 219, 0.3)', 'rgba(52, 152, 219, 0.1)', 'rgba(52, 152, 219, 0.02)']
-            }
+            VOO: { primary: '#2ecc71', gradient: ['rgba(46, 204, 113, 0.3)', 'rgba(46, 204, 113, 0.1)', 'rgba(46, 204, 113, 0.02)'] },
+            HACK: { primary: '#e74c3c', gradient: ['rgba(231, 76, 60, 0.3)', 'rgba(231, 76, 60, 0.1)', 'rgba(231, 76, 60, 0.02)'] },
+            EIS: { primary: '#3498db', gradient: ['rgba(52, 152, 219, 0.3)', 'rgba(52, 152, 219, 0.1)', 'rgba(52, 152, 219, 0.02)'] },
+            QQQ: { primary: '#9b59b6', gradient: ['rgba(155, 89, 182, 0.3)', 'rgba(155, 89, 182, 0.1)', 'rgba(155, 89, 182, 0.02)'] },
+            IBIT: { primary: '#f39c12', gradient: ['rgba(243, 156, 18, 0.3)', 'rgba(243, 156, 18, 0.1)', 'rgba(243, 156, 18, 0.02)'] },
+            URA: { primary: '#1abc9c', gradient: ['rgba(26, 188, 156, 0.3)', 'rgba(26, 188, 156, 0.1)', 'rgba(26, 188, 156, 0.02)'] },
+            BLCN: { primary: '#e74c3c', gradient: ['rgba(231, 76, 60, 0.3)', 'rgba(231, 76, 60, 0.1)', 'rgba(231, 76, 60, 0.02)'] },
+            IYW: { primary: '#2ecc71', gradient: ['rgba(46, 204, 113, 0.3)', 'rgba(46, 204, 113, 0.1)', 'rgba(46, 204, 113, 0.02)'] },
+            AIQ: { primary: '#3498db', gradient: ['rgba(52, 152, 219, 0.3)', 'rgba(52, 152, 219, 0.1)', 'rgba(52, 152, 219, 0.02)'] }
         };
 
-        Object.keys(this.etfData).forEach(etf => {
-            const ctx = document.getElementById(`${etf.toLowerCase()}Chart`).getContext('2d');
-            const prices = this.etfData[etf].prices;
+        Object.keys(weekData.investments).forEach(etf => {
+            const ctx = document.getElementById(`${weekKey}-${etf.toLowerCase()}Chart`);
+            if (!ctx) return;
+
+            const prices = weekData.actualPrices[etf];
             const color = colors[etf];
 
-            // Create gradient for individual chart
-            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+            // Create gradient
+            const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 300);
             gradient.addColorStop(0, color.gradient[0]);
             gradient.addColorStop(0.5, color.gradient[1]);
             gradient.addColorStop(1, color.gradient[2]);
 
-            new Chart(ctx, {
+            this.currentCharts[`${weekKey}-${etf}`] = new Chart(ctx, {
                 type: 'line',
                 data: {
                     labels: this.dates,
@@ -327,31 +546,19 @@ class ETFPortfolioAnalyzer {
                         pointBorderColor: '#ffffff',
                         pointBorderWidth: 3,
                         pointRadius: 7,
-                        pointHoverRadius: 10,
-                        pointHoverBorderWidth: 4
+                        pointHoverRadius: 10
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    interaction: {
-                        intersect: false,
-                        mode: 'index'
-                    },
                     plugins: {
-                        legend: {
-                            display: false
-                        },
+                        legend: { display: false },
                         title: {
                             display: true,
                             text: `${etf} Price Movement`,
-                            font: {
-                                size: 16,
-                                weight: '700',
-                                family: 'Inter'
-                            },
-                            color: '#2c3e50',
-                            padding: 15
+                            font: { size: 16, weight: '700', family: 'Inter' },
+                            color: '#2c3e50'
                         },
                         tooltip: {
                             backgroundColor: 'rgba(255, 255, 255, 0.95)',
@@ -375,34 +582,13 @@ class ETFPortfolioAnalyzer {
                                 callback: function(value) {
                                     return '$' + value.toFixed(2);
                                 },
-                                color: '#5a6c7d',
-                                font: {
-                                    size: 11,
-                                    weight: '500'
-                                }
+                                color: '#5a6c7d'
                             },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.08)',
-                                drawBorder: false
-                            }
+                            grid: { color: 'rgba(0, 0, 0, 0.08)', drawBorder: false }
                         },
                         x: {
-                            ticks: {
-                                color: '#5a6c7d',
-                                font: {
-                                    size: 11,
-                                    weight: '500'
-                                }
-                            },
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.08)',
-                                drawBorder: false
-                            }
-                        }
-                    },
-                    elements: {
-                        point: {
-                            hoverRadius: 10
+                            ticks: { color: '#5a6c7d' },
+                            grid: { color: 'rgba(0, 0, 0, 0.08)', drawBorder: false }
                         }
                     }
                 }
@@ -410,79 +596,98 @@ class ETFPortfolioAnalyzer {
         });
     }
 
-    generateAnalysis() {
-        const { etfs } = this.portfolioPerformance;
+    generateWeekAnalysis(weekKey, weekData) {
+        const analysisElement = document.getElementById(`${weekKey}-weekAnalysis`);
+        if (!analysisElement) return;
 
-        // Update overview section performance data
-        const blcnPerfElement = document.getElementById('overview-blcn-perf');
-        const iywPerfElement = document.getElementById('overview-iyw-perf');
-        const aiqPerfElement = document.getElementById('overview-aiq-perf');
+        const totalReturnPercent = (weekData.totalGain / weekData.totalInvestment) * 100;
         
-        blcnPerfElement.textContent = `+$4,104.59 (+1.03%)`;
-        iywPerfElement.textContent = `+$3,023.52 (+1.01%)`;
-        aiqPerfElement.textContent = `+$3,023.17 (+1.01%)`;
+        let weekAnalysis = '';
         
-        // Add positive styling
-        blcnPerfElement.style.color = '#27ae60';
-        blcnPerfElement.style.fontWeight = '600';
-        iywPerfElement.style.color = '#27ae60';
-        iywPerfElement.style.fontWeight = '600';
-        aiqPerfElement.style.color = '#27ae60';
-        aiqPerfElement.style.fontWeight = '600';
+        switch(weekKey) {
+            case 'week1':
+                weekAnalysis = `
+                    <p>Week 1 delivered exceptional performance with a ${this.formatPercentage(totalReturnPercent)} return, the strongest week of the competition.</p>
+                    <ul>
+                        <li><strong>EIS:</strong> Led with 4.65% gain - Israel tech sector strength</li>
+                        <li><strong>VOO:</strong> Solid 3.33% S&P 500 performance showed broad market momentum</li>
+                        <li><strong>HACK:</strong> Cybersecurity sector gained 3.25% on increased demand</li>
+                        <li><strong>Strategy Success:</strong> Diversified approach across geographies and sectors paid off</li>
+                    </ul>
+                `;
+                break;
+            case 'week2':
+                weekAnalysis = `
+                    <p>Week 2 showed modest gains with a ${this.formatPercentage(totalReturnPercent)} return, impacted by URA's uranium sector decline.</p>
+                    <ul>
+                        <li><strong>IBIT:</strong> Bitcoin ETF gained 1.50% as crypto sentiment improved</li>
+                        <li><strong>QQQ:</strong> NASDAQ tracking showed 0.90% growth in tech leaders</li>
+                        <li><strong>URA:</strong> Uranium sector declined -2.19% on regulatory concerns</li>
+                        <li><strong>Learning:</strong> Commodity exposure added volatility to tech-focused strategy</li>
+                    </ul>
+                `;
+                break;
+            case 'week3':
+                weekAnalysis = `
+                    <p>Week 3 generated a ${this.formatPercentage(totalReturnPercent)} return with BLCN leading the tech-focused portfolio.</p>
+                    <ul>
+                        <li><strong>BLCN:</strong> Blockchain sector gained 2.17% on institutional adoption news</li>
+                        <li><strong>IYW:</strong> Broad tech exposure remained flat at 0.04%</li>
+                        <li><strong>AIQ:</strong> AI sector declined -1.14% on profit-taking</li>
+                        <li><strong>Tech Focus:</strong> Concentration in tech themes showed both opportunity and risk</li>
+                    </ul>
+                `;
+                break;
+            case 'week4':
+                weekAnalysis = `
+                    <p>Week 4 finished strong with a ${this.formatPercentage(totalReturnPercent)} return, second-best performance using the refined tech strategy.</p>
+                    <ul>
+                        <li><strong>BLCN:</strong> Blockchain continued momentum with 2.61% gain</li>
+                        <li><strong>IYW & AIQ:</strong> Both tech ETFs delivered consistent ~0.78% returns</li>
+                        <li><strong>Strategy Refinement:</strong> Repeating successful Week 3 picks with better timing</li>
+                        <li><strong>Strong Finish:</strong> Demonstrated learning and adaptation throughout competition</li>
+                    </ul>
+                `;
+                break;
+        }
 
-        // Overview market summary
-        const overviewSummary = `
-            <h3>Key Insights</h3>
-            <p>Your technology-focused ETF portfolio generated a solid 1.02% return over the four-day period, resulting in a total gain of $10,151.27. All three ETFs posted positive returns, demonstrating the strength of your diversified tech strategy.</p>
-            
-            <div style="margin-top: 20px;">
-                <h4>Performance Highlights:</h4>
-                <ul style="margin-top: 10px;">
-                    <li><strong>BLCN</strong> led with 1.03% (+$4,104.59) - blockchain sector strength</li>
-                    <li><strong>IYW & AIQ</strong> both delivered 1.01% returns - consistent tech performance</li>
-                    <li><strong>Strategic allocation</strong> to BLCN maximized gains from best performer</li>
-                    <li><strong>Portfolio diversification</strong> across tech subsectors provided balanced exposure</li>
-                </ul>
-            </div>
-        `;
-        document.getElementById('marketSummary').innerHTML = overviewSummary;
+        analysisElement.innerHTML = weekAnalysis;
 
-        // BLCN Analysis - Best performer at 1.0261%
-        const blcnAnalysis = `
-            <p>BLCN was your top performer with a solid 1.03% gain, generating $4,104.59 in returns over the 4-day period.</p>
-            <ul>
-                <li>Blockchain technology sector showed renewed strength with price moving from $24.86 to $25.51</li>
-                <li>The 2.6% price appreciation reflects growing institutional adoption of blockchain solutions</li>
-                <li>Your larger $400K allocation to BLCN proved strategic, contributing the most to portfolio gains</li>
-                <li>Blockchain ETFs benefited from positive crypto market sentiment and DeFi growth</li>
-            </ul>
-        `;
+        // Generate individual ETF analysis
+        Object.keys(weekData.investments).forEach(etf => {
+            const etfAnalysisElement = document.getElementById(`${weekKey}-${etf.toLowerCase()}Analysis`);
+            if (etfAnalysisElement) {
+                const investment = weekData.investments[etf];
+                const returnAmount = investment.finalValue - investment.amount;
+                
+                etfAnalysisElement.innerHTML = `
+                    <h5>Performance Analysis</h5>
+                    <p>${etf} ${returnAmount >= 0 ? 'gained' : 'declined'} ${this.formatPercentage(Math.abs(investment.gainPercent))} over the ${weekData.dateRange} period.</p>
+                    <ul>
+                        <li>Price movement: $${investment.openPrice} → $${investment.closePrice}</li>
+                        <li>Investment return: ${this.formatCurrency(returnAmount)}</li>
+                        <li>Final position value: ${this.formatCurrency(investment.finalValue)}</li>
+                        <li>${this.getETFInsight(etf, investment.gainPercent)}</li>
+                    </ul>
+                `;
+            }
+        });
+    }
 
-        // IYW Analysis - Second best at 1.0078%
-        const iywAnalysis = `
-            <p>IYW delivered steady performance with a 1.01% return, adding $3,023.52 to your technology sector allocation.</p>
-            <ul>
-                <li>Broad technology exposure provided stability with price rising from $177.33 to $178.72</li>
-                <li>The $1.39 price increase reflects solid fundamentals in the tech sector</li>
-                <li>Diversified holdings across major tech companies offered consistent growth</li>
-                <li>Strong earnings outlook and innovation pipeline supported positive performance</li>
-            </ul>
-        `;
-
-        // AIQ Analysis - Close third at 1.0077%
-        const aiqAnalysis = `
-            <p>AIQ matched the technology sector performance with a 1.01% gain, contributing $3,023.17 to portfolio returns.</p>
-            <ul>
-                <li>AI-focused investments remained resilient with price advancing from $44.02 to $44.36</li>
-                <li>The $0.34 price gain reflects continued optimism in artificial intelligence adoption</li>
-                <li>Enterprise AI solutions and machine learning advances drove investor confidence</li>
-                <li>Concentrated AI exposure delivered returns in line with broader tech trends</li>
-            </ul>
-        `;
-
-        document.getElementById('blcnAnalysis').innerHTML = `<h4>Performance Analysis</h4>${blcnAnalysis}`;
-        document.getElementById('iywAnalysis').innerHTML = `<h4>Performance Analysis</h4>${iywAnalysis}`;
-        document.getElementById('aiqAnalysis').innerHTML = `<h4>Performance Analysis</h4>${aiqAnalysis}`;
+    getETFInsight(etf, gainPercent) {
+        const insights = {
+            VOO: gainPercent > 0 ? "S&P 500 benefited from broad market optimism and strong corporate earnings" : "Market volatility affected broad index performance",
+            HACK: gainPercent > 0 ? "Cybersecurity demand increased amid rising digital threats" : "Sector consolidation and valuation concerns weighed on performance",
+            EIS: gainPercent > 0 ? "Israel tech sector showed innovation leadership in global markets" : "Geopolitical factors and regional market conditions impacted performance",
+            QQQ: gainPercent > 0 ? "NASDAQ tech leaders drove market performance higher" : "Tech sector rotation and profit-taking affected NASDAQ performance",
+            IBIT: gainPercent > 0 ? "Bitcoin institutional adoption supported crypto ETF performance" : "Cryptocurrency volatility and regulatory concerns impacted returns",
+            URA: gainPercent > 0 ? "Uranium sector benefited from nuclear energy revival trends" : "Regulatory uncertainty and supply chain issues affected uranium prices",
+            BLCN: gainPercent > 0 ? "Blockchain technology adoption by institutions drove sector gains" : "Crypto market volatility and regulatory concerns weighed on blockchain stocks",
+            IYW: gainPercent > 0 ? "Technology sector fundamentals supported broad-based gains" : "Tech sector rotation and valuation concerns created headwinds",
+            AIQ: gainPercent > 0 ? "AI sector momentum continued with enterprise adoption growth" : "AI bubble concerns and high valuations led to profit-taking"
+        };
+        
+        return insights[etf] || "Market conditions influenced performance during this period";
     }
 
     formatCurrency(amount) {
@@ -499,47 +704,7 @@ class ETFPortfolioAnalyzer {
     }
 }
 
-// Initialize the application when the DOM is loaded
+// Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    new ETFPortfolioAnalyzer();
-});
-
-// Navigation functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const navButtons = document.querySelectorAll('.nav-btn');
-    const etfSections = document.querySelectorAll('.etf-section');
-
-    // Add click event listeners to navigation buttons
-    navButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const targetEtf = this.getAttribute('data-etf');
-            
-            // Remove active class from all buttons
-            navButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Hide all sections
-            etfSections.forEach(section => section.classList.remove('active'));
-            
-            // Show target section
-            const targetSection = document.getElementById(`${targetEtf}-section`);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
-        });
-    });
-
-    // Add hover effects for summary cards
-    const summaryCards = document.querySelectorAll('.summary-card');
-    summaryCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-5px)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0)';
-        });
-    });
+    new ETFCompetitionAnalyzer();
 }); 

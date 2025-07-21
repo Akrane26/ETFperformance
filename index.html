@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETF Portfolio Performance Analysis - July 15-18, 2025</title>
+    <title>Ari's ETF Competition - Summer 2025 | Palo Alto Investors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,187 +14,114 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1>ETF Portfolio Performance Analysis</h1>
-            <div class="date-range">
-                <span>Investment Period: July 15, 2025 - July 18, 2025</span>
+            <h1>Ari's ETF Competition</h1>
+            <div class="subtitle">
+                <span>Summer 2025 Intern Challenge | Palo Alto Investors</span>
             </div>
-            <div class="total-investment">
-                <span>Total Investment: $1,000,000</span>
+            <div class="competition-stats">
+                <span>4 Weeks • 10 ETFs • $1M Weekly Budget</span>
             </div>
         </header>
 
-        <section class="portfolio-summary">
-            <h2>Portfolio Overview</h2>
-            <div class="summary-cards">
-                <div class="summary-card total-return">
-                    <h3>Total Portfolio Return</h3>
-                    <div class="return-value" id="totalReturn">$0</div>
-                    <div class="return-percentage" id="totalReturnPercent">0%</div>
-                </div>
-                <div class="summary-card best-performer">
-                    <h3>Best Performer</h3>
-                    <div class="performer-etf" id="bestPerformer">-</div>
-                    <div class="performer-return" id="bestPerformerReturn">-</div>
-                </div>
-                <div class="summary-card worst-performer">
-                    <h3>Worst Performer</h3>
-                    <div class="performer-etf" id="worstPerformer">-</div>
-                    <div class="performer-return" id="worstPerformerReturn">-</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="portfolio-chart">
-            <h2>Portfolio Performance Timeline</h2>
-            <div class="chart-container">
-                <canvas id="portfolioChart"></canvas>
-            </div>
-        </section>
-
-        <section class="etf-navigation">
-            <h2>Individual ETF Analysis</h2>
+        <!-- Main Navigation -->
+        <section class="main-navigation">
             <div class="nav-buttons">
-                <button class="nav-btn active" data-etf="overview">Portfolio Overview</button>
-                <button class="nav-btn" data-etf="blcn">BLCN - Blockchain ($400,000)</button>
-                <button class="nav-btn" data-etf="iyw">IYW - Technology ($300,000)</button>
-                <button class="nav-btn" data-etf="aiq">AIQ - AI ($300,000)</button>
+                <button class="nav-btn active" data-page="home">🏠 Home</button>
+                <button class="nav-btn" data-page="week1">📈 Week 1: Jun 23-27</button>
+                <button class="nav-btn" data-page="week2">📊 Week 2: Jun 30-Jul 3</button>
+                <button class="nav-btn" data-page="week3">📉 Week 3: Jul 8-11</button>
+                <button class="nav-btn" data-page="week4">🚀 Week 4: Jul 15-18</button>
             </div>
         </section>
 
-        <section class="etf-content">
-            <!-- Overview Section -->
-            <div class="etf-section active" id="overview-section">
-                <div class="overview-content">
-                    <h3>Investment Summary</h3>
-                    <div class="investment-grid">
-                        <div class="investment-item">
-                            <h4>BLCN - Reality Shares Nasdaq NexGen Economy ETF</h4>
-                            <p><strong>Investment:</strong> $400,000</p>
-                            <p><strong>Focus:</strong> Blockchain Technology</p>
-                            <p><strong>Performance:</strong> <span id="overview-blcn-perf">Loading...</span></p>
-                        </div>
-                        <div class="investment-item">
-                            <h4>IYW - iShares U.S. Technology ETF</h4>
-                            <p><strong>Investment:</strong> $300,000</p>
-                            <p><strong>Focus:</strong> Broad Technology Sector</p>
-                            <p><strong>Performance:</strong> <span id="overview-iyw-perf">Loading...</span></p>
-                        </div>
-                        <div class="investment-item">
-                            <h4>AIQ - Global X Artificial Intelligence & Technology ETF</h4>
-                            <p><strong>Investment:</strong> $300,000</p>
-                            <p><strong>Focus:</strong> Artificial Intelligence</p>
-                            <p><strong>Performance:</strong> <span id="overview-aiq-perf">Loading...</span></p>
-                        </div>
-                    </div>
-                    <div class="market-summary" id="marketSummary">
-                        <h3>Key Insights</h3>
-                        <p>Loading portfolio analysis...</p>
+        <!-- Home Page -->
+        <section class="page-content active" id="home-page">
+            <div class="home-content">
+                <div class="mission-statement">
+                    <h2>The Challenge</h2>
+                    <p>A friendly competition between interns at Palo Alto Investors to pick three ETFs every week and compare performance. Each participant receives a $1,000,000 virtual budget to allocate across their chosen ETFs.</p>
+                    
+                    <div class="challenge-rules">
+                        <h3>Competition Rules</h3>
+                        <ul>
+                            <li>🎯 Pick 3 ETFs each week</li>
+                            <li>💰 $1,000,000 weekly budget</li>
+                            <li>📅 4-day investment periods</li>
+                            <li>📊 Performance tracked daily</li>
+                            <li>🏆 Best weekly performance wins</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
 
-            <!-- BLCN Section -->
-            <div class="etf-section" id="blcn-section">
-                <div class="etf-header">
-                    <h3>BLCN - Reality Shares Nasdaq NexGen Economy ETF</h3>
-                    <div class="investment-amount">Investment: $400,000</div>
-                </div>
-                <div class="etf-content-grid">
-                    <div class="etf-chart-container">
-                        <canvas id="blcnChart"></canvas>
-                    </div>
-                    <div class="etf-metrics">
-                        <div class="performance-metrics">
-                            <div class="metric">
-                                <span class="metric-label">Return:</span>
-                                <span class="metric-value" id="blcnReturn">$0</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Percentage:</span>
-                                <span class="metric-value" id="blcnPercent">0%</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Final Value:</span>
-                                <span class="metric-value" id="blcnFinalValue">$400,000</span>
-                            </div>
-                        </div>
+                <div class="participant-intro">
+                    <h2>Meet the Competitor</h2>
+                    <div class="participant-card">
+                        <h3>Ari Crane</h3>
+                        <p><strong>Position:</strong> Summer Intern, Palo Alto Investors</p>
+                        <p><strong>Strategy:</strong> Tech-focused with emerging sectors exposure</p>
+                        <p><strong>Specialties:</strong> Blockchain, AI, Cybersecurity, Traditional Tech</p>
                     </div>
                 </div>
-                <div class="analysis" id="blcnAnalysis">
-                    <h4>Performance Analysis</h4>
-                    <p>Loading analysis...</p>
-                </div>
-            </div>
 
-            <!-- IYW Section -->
-            <div class="etf-section" id="iyw-section">
-                <div class="etf-header">
-                    <h3>IYW - iShares U.S. Technology ETF</h3>
-                    <div class="investment-amount">Investment: $300,000</div>
-                </div>
-                <div class="etf-content-grid">
-                    <div class="etf-chart-container">
-                        <canvas id="iywChart"></canvas>
+                <div class="weekly-summary">
+                    <h2>4-Week Performance Overview</h2>
+                    <div class="week-cards">
+                        <div class="week-card week1-card">
+                            <h4>Week 1: Jun 23-27</h4>
+                            <p class="week-etfs">VOO • HACK • EIS</p>
+                            <p class="week-return" id="week1-return">+$36,363.50 (+3.64%)</p>
+                            <div class="week-badge best">🏆 Best Week</div>
+                        </div>
+                        <div class="week-card week2-card">
+                            <h4>Week 2: Jun 30-Jul 3</h4>
+                            <p class="week-etfs">QQQ • IBIT • URA</p>
+                            <p class="week-return" id="week2-return">+$4,616.34 (+0.46%)</p>
+                            <div class="week-badge">Steady</div>
+                        </div>
+                        <div class="week-card week3-card">
+                            <h4>Week 3: Jul 8-11</h4>
+                            <p class="week-etfs">BLCN • IYW • AIQ</p>
+                            <p class="week-return" id="week3-return">+$5,356.83 (+0.54%)</p>
+                            <div class="week-badge">Recovery</div>
+                        </div>
+                        <div class="week-card week4-card">
+                            <h4>Week 4: Jul 15-18</h4>
+                            <p class="week-etfs">BLCN • IYW • AIQ</p>
+                            <p class="week-return" id="week4-return">+$15,127.24 (+1.51%)</p>
+                            <div class="week-badge strong">Strong Finish</div>
+                        </div>
                     </div>
-                    <div class="etf-metrics">
-                        <div class="performance-metrics">
-                            <div class="metric">
-                                <span class="metric-label">Return:</span>
-                                <span class="metric-value" id="iywReturn">$0</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Percentage:</span>
-                                <span class="metric-value" id="iywPercent">0%</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Final Value:</span>
-                                <span class="metric-value" id="iywFinalValue">$300,000</span>
-                            </div>
+                    
+                    <div class="total-performance">
+                        <h3>Total Competition Performance</h3>
+                        <div class="total-stats">
+                            <span class="total-return">+$61,463.91</span>
+                            <span class="total-percentage">(+1.54% Average)</span>
                         </div>
                     </div>
                 </div>
-                <div class="analysis" id="iywAnalysis">
-                    <h4>Performance Analysis</h4>
-                    <p>Loading analysis...</p>
-                </div>
             </div>
+        </section>
 
-            <!-- AIQ Section -->
-            <div class="etf-section" id="aiq-section">
-                <div class="etf-header">
-                    <h3>AIQ - Global X Artificial Intelligence & Technology ETF</h3>
-                    <div class="investment-amount">Investment: $300,000</div>
-                </div>
-                <div class="etf-content-grid">
-                    <div class="etf-chart-container">
-                        <canvas id="aiqChart"></canvas>
-                    </div>
-                    <div class="etf-metrics">
-                        <div class="performance-metrics">
-                            <div class="metric">
-                                <span class="metric-label">Return:</span>
-                                <span class="metric-value" id="aiqReturn">$0</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Percentage:</span>
-                                <span class="metric-value" id="aiqPercent">0%</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-label">Final Value:</span>
-                                <span class="metric-value" id="aiqFinalValue">$300,000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="analysis" id="aiqAnalysis">
-                    <h4>Performance Analysis</h4>
-                    <p>Loading analysis...</p>
-                </div>
-            </div>
+        <!-- Week Templates (will be populated by JavaScript) -->
+        <section class="page-content" id="week1-page">
+            <div id="week1-content"></div>
+        </section>
+        
+        <section class="page-content" id="week2-page">
+            <div id="week2-content"></div>
+        </section>
+        
+        <section class="page-content" id="week3-page">
+            <div id="week3-content"></div>
+        </section>
+        
+        <section class="page-content" id="week4-page">
+            <div id="week4-content"></div>
         </section>
 
         <footer class="footer">
-            <p>Data from actual investment performance for the period July 15-18, 2025. Click buttons above to explore individual ETF analysis.</p>
+            <p>🏢 Palo Alto Investors • Summer 2025 Intern Competition • Data from actual ETF performance</p>
         </footer>
     </div>
 
