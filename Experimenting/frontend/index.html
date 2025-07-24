@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete.AI - AI-Powered Athlete Evaluation</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>Athlete.<span class="ai-text">AI</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            <div class="nav-auth">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Landing Page -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Unlock Your Athletic Potential with 
+                        <span class="gradient-text">AI-Powered Evaluation</span>
+                    </h1>
+                    <p class="hero-description">
+                        Get comprehensive grades on your physical performance, academic achievements, 
+                        and highlight reels. Take your recruiting game to the next level.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Sports Supported</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100</span>
+                            <span class="stat-label">Point Scale</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">AI</span>
+                            <span class="stat-label">Powered Analysis</span>
+                        </div>
+                    </div>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary btn-large" id="getStartedBtn">
+                            Get Your Evaluation
+                        </button>
+                        <button class="btn btn-outline btn-large" id="learnMoreBtn">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="evaluation-preview">
+                        <div class="preview-card">
+                            <h3>Sample Evaluation</h3>
+                            <div class="grade-display">
+                                <div class="grade-item">
+                                    <span class="grade-label">Physical</span>
+                                    <span class="grade-value">87</span>
+                                </div>
+                                <div class="grade-item">
+                                    <span class="grade-label">Academic</span>
+                                    <span class="grade-value">92</span>
+                                </div>
+                                <div class="grade-item">
+                                    <span class="grade-label">Highlights</span>
+                                    <span class="grade-value">85</span>
+                                </div>
+                            </div>
+                            <div class="overall-grade">
+                                <span class="overall-label">Overall Grade</span>
+                                <span class="overall-value">88</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Comprehensive Athlete Analysis</h2>
+                    <p>Our AI evaluates three key dimensions of athletic performance</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">💪</div>
+                        <h3>Physical Performance</h3>
+                        <p>Height, weight, speed, strength, and sport-specific measurements evaluated against benchmarks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎓</div>
+                        <h3>Academic Excellence</h3>
+                        <p>GPA, standardized test scores, AP courses, and class ranking for college readiness</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎬</div>
+                        <h3>Sport Performance</h3>
+                        <p>AI-powered video analysis, awards recognition, and leadership evaluation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Evaluation History Section (for logged in users) -->
+        <section id="mainHistorySection" class="history-main-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Your Evaluation History</h2>
+                    <p>Track your athletic progress over time</p>
+                    <button class="btn btn-primary" id="viewHistoryMainBtn">View Full History</button>
+                </div>
+                <div id="mainHistoryResults" class="main-history-grid">
+                    <!-- History will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-form">
+                <h2>Welcome Back</h2>
+                <p>Log in to access your athlete profile and evaluations</p>
+                <form class="form">
+                    <div class="form-group">
+                        <label for="loginUsername">Username or Email</label>
+                        <input type="text" id="loginUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Log In</button>
+                </form>
+                <p class="auth-switch">
+                    Don't have an account? <a href="#" id="showSignup">Sign up here</a>
+                </p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupForm" class="auth-form" style="display: none;">
+                <h2>Join Athlete.AI</h2>
+                <p>Create your account to get started with AI-powered evaluations</p>
+                <form class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+                <p class="auth-switch">
+                    Already have an account? <a href="#" id="showLogin">Log in here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (Hidden by default) -->
+    <div id="dashboard" class="dashboard" style="display: none;">
+        <div class="dashboard-header">
+            <div class="dashboard-nav">
+                <h1 class="clickable-logo" id="dashboardLogo">Athlete.<span class="ai-text">AI</span></h1>
+                <div class="dashboard-user">
+                    <span id="userGreeting">Welcome back!</span>
+                    <button class="btn btn-outline btn-small" id="logoutBtn">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Profile Submission Form -->
+            <div id="profileSection" class="dashboard-section">
+                <div class="section-header">
+                    <h2>Submit Your Athletic Profile</h2>
+                    <p>Provide your information for comprehensive AI evaluation</p>
+                </div>
+
+                <form id="athleteProfileForm" class="profile-form">
+                    <!-- Sport Selection -->
+                    <div class="form-section">
+                        <h3>Sport Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="sport">Primary Sport</label>
+                                <select id="sport" name="sportId" required>
+                                    <option value="">Select your sport...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Position (Optional)</label>
+                                <input type="text" id="position" name="position" placeholder="e.g., Quarterback, Point Guard">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Physical Stats -->
+                    <div class="form-section">
+                        <h3>Physical Measurements</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="height">Height (inches)</label>
+                                <input type="number" id="height" name="height" min="48" max="96">
+                            </div>
+                            <div class="form-group">
+                                <label for="weight">Weight (lbs)</label>
+                                <input type="number" id="weight" name="weight" min="80" max="400">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" min="13" max="25" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="yearsExperience">Years of Experience</label>
+                                <input type="number" id="yearsExperience" name="yearsExperience" min="0" max="15">
+                            </div>
+                            <div class="form-group">
+                                <label for="fortyYardDash">40-Yard Dash (seconds)</label>
+                                <input type="number" id="fortyYardDash" name="fortyYardDash" step="0.01" min="3.5" max="8.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="verticalJump">Vertical Jump (inches)</label>
+                                <input type="number" id="verticalJump" name="verticalJump" min="10" max="50">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="benchPress">Bench Press (reps at 185 lbs)</label>
+                                <input type="number" id="benchPress" name="benchPress" min="0" max="50">
+                            </div>
+                            <div class="form-group">
+                                <label for="squatMax">Squat Max (lbs)</label>
+                                <input type="number" id="squatMax" name="squatMax" min="100" max="800">
+                            </div>
+                            <div class="form-group">
+                                <label for="mileTime">Mile Time (MM:SS)</label>
+                                <input type="text" id="mileTime" name="mileTime" placeholder="e.g., 6:30">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academic Stats -->
+                    <div class="form-section">
+                        <h3>Academic Performance</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="gpa">GPA (4.0 scale)</label>
+                                <input type="number" id="gpa" name="gpa" step="0.01" min="0" max="4.0">
+                            </div>
+                            <div class="form-group">
+                                <label for="satScore">SAT Score</label>
+                                <input type="number" id="satScore" name="satScore" min="400" max="1600">
+                            </div>
+                            <div class="form-group">
+                                <label for="actScore">ACT Score</label>
+                                <input type="number" id="actScore" name="actScore" min="1" max="36">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="apClasses">AP Classes Taken</label>
+                                <input type="number" id="apClasses" name="apClasses" min="0" max="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="honorsClasses">Honors Classes</label>
+                                <input type="number" id="honorsClasses" name="honorsClasses" min="0" max="30">
+                            </div>
+                            <div class="form-group">
+                                <label for="graduationYear">Graduation Year</label>
+                                <input type="number" id="graduationYear" name="graduationYear" min="2020" max="2030">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="classRank">Class Rank</label>
+                                <input type="number" id="classRank" name="classRank" min="1" max="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="classSize">Class Size</label>
+                                <input type="number" id="classSize" name="classSize" min="1" max="1000">
+                            </div>
+                            <div class="form-group">
+                                <label for="majorInterest">Intended Major</label>
+                                <input type="text" id="majorInterest" name="majorInterest" placeholder="e.g., Business, Engineering">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sport Performance -->
+                    <div class="form-section">
+                        <h3>Sport Performance & Achievements</h3>
+                        
+                        <!-- Awards and Recognition -->
+                        <div class="form-group">
+                            <label for="awards">Awards & Recognition</label>
+                            <input type="text" id="awards" name="awards" 
+                                   placeholder="e.g., All-State, Team MVP, All-League, State Champion">
+                            <small>List your most significant awards and recognitions</small>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="teamCaptain">Team Captain</label>
+                                <select id="teamCaptain" name="teamCaptain">
+                                    <option value="">Select...</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="varsityYears">Years on Varsity</label>
+                                <input type="number" id="varsityYears" name="varsityYears" min="0" max="4">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tournamentWins">Tournament & Championship Wins</label>
+                            <input type="text" id="tournamentWins" name="tournamentWins" 
+                                   placeholder="e.g., State Championship, Regional Tournament, Conference Title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="statisticalHighlights">Statistical Highlights</label>
+                            <textarea id="statisticalHighlights" name="statisticalHighlights" rows="2" 
+                                      placeholder="e.g., Leading scorer, Team record holder, 1st in league batting average"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leadershipRoles">Leadership Roles</label>
+                            <input type="text" id="leadershipRoles" name="leadershipRoles" 
+                                   placeholder="e.g., Co-captain, Mentor, Student council representative">
+                        </div>
+                        
+                        <!-- Highlight Video -->
+                        <h4 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--primary-color);">Highlight Video</h4>
+                        <div class="form-group">
+                            <label for="videoUrl">Video URL *</label>
+                            <input type="url" id="videoUrl" name="videoUrl" required 
+                                   placeholder="https://youtube.com/watch?v=... or https://hudl.com/...">
+                            <small>Supported platforms: YouTube, Vimeo, Hudl</small>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="videoTitle">Video Title</label>
+                                <input type="text" id="videoTitle" name="videoTitle" placeholder="e.g., Senior Season Highlights">
+                            </div>
+                            <div class="form-group">
+                                <label for="videoDuration">Duration (seconds)</label>
+                                <input type="number" id="videoDuration" name="videoDuration" min="30" max="600">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="videoDescription">Video Description</label>
+                            <textarea id="videoDescription" name="videoDescription" rows="3" 
+                                      placeholder="Describe your highlights, achievements, and standout plays..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-large">
+                            Submit for AI Evaluation
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Evaluation Results -->
+            <div id="evaluationSection" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Your AI Evaluation</h2>
+                    <p>Comprehensive analysis of your athletic profile</p>
+                    <button class="btn btn-outline" id="viewHistoryBtn" style="margin-top: 1rem;">View Evaluation History</button>
+                </div>
+                
+                <div id="evaluationResults" class="evaluation-results">
+                    <!-- Results will be dynamically inserted here -->
+                </div>
+            </div>
+            
+            <!-- Evaluation History -->
+            <div id="historySection" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Evaluation History</h2>
+                    <p>Track your progress over time</p>
+                    <button class="btn btn-outline" id="backToCurrentBtn">Back to Current Evaluation</button>
+                </div>
+                
+                <div id="historyResults" class="history-results">
+                    <!-- History will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Analyzing your profile with AI...</p>
+    </div>
+
+    <!-- Error/Success Messages -->
+    <div id="messageContainer" class="message-container"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+{
+  "name": "athlete-ai",
+  "version": "1.0.0",
+  "description": "AI-driven athlete evaluation platform combining physical stats, academics, and highlight reels",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "init-db": "node backend/database/init.js"
+  },
+  "keywords": ["AI", "sports", "athlete", "evaluation", "grading"],
+  "author": "Ari Krane",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "multer": "^1.4.5-lts.1",
+    "axios": "^1.6.2",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+} 
