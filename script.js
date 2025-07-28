@@ -154,6 +154,44 @@ class ETFCompetitionAnalyzer {
                     IYW: [176.77, 177.14, 178.69, 178.72],
                     AIQ: [43.79, 43.98, 44.43, 44.36]
                 }
+            },
+            week5: {
+                title: "Week 5: July 22-25, 2025",
+                dateRange: "Jul 22-25",
+                totalInvestment: 1000000,
+                totalFinalValue: 1006409.92,
+                totalGain: 6409.92,
+                investments: {
+                    IXP: { 
+                        amount: 400000, 
+                        openPrice: 111.78, 
+                        closePrice: 113.19,
+                        gainPercent: 1.26,
+                        finalValue: 405045.63,
+                        name: "iShares Global Tech ETF"
+                    },
+                    FINX: { 
+                        amount: 350000, 
+                        openPrice: 35.13, 
+                        closePrice: 35.28,
+                        gainPercent: 0.43,
+                        finalValue: 351494.45,
+                        name: "Global X FinTech ETF"
+                    },
+                    ARKK: { 
+                        amount: 250000, 
+                        openPrice: 76.83, 
+                        closePrice: 76.79,
+                        gainPercent: -0.05,
+                        finalValue: 249869.84,
+                        name: "ARK Innovation ETF"
+                    }
+                },
+                actualPrices: {
+                    IXP: [111.78, 112.15, 112.80, 113.19],
+                    FINX: [35.13, 35.18, 35.22, 35.28],
+                    ARKK: [76.83, 76.95, 76.75, 76.79]
+                }
             }
         };
 
@@ -514,7 +552,10 @@ class ETFCompetitionAnalyzer {
             URA: { primary: '#1abc9c', gradient: ['rgba(26, 188, 156, 0.3)', 'rgba(26, 188, 156, 0.1)', 'rgba(26, 188, 156, 0.02)'] },
             BLCN: { primary: '#e74c3c', gradient: ['rgba(231, 76, 60, 0.3)', 'rgba(231, 76, 60, 0.1)', 'rgba(231, 76, 60, 0.02)'] },
             IYW: { primary: '#2ecc71', gradient: ['rgba(46, 204, 113, 0.3)', 'rgba(46, 204, 113, 0.1)', 'rgba(46, 204, 113, 0.02)'] },
-            AIQ: { primary: '#3498db', gradient: ['rgba(52, 152, 219, 0.3)', 'rgba(52, 152, 219, 0.1)', 'rgba(52, 152, 219, 0.02)'] }
+            AIQ: { primary: '#3498db', gradient: ['rgba(52, 152, 219, 0.3)', 'rgba(52, 152, 219, 0.1)', 'rgba(52, 152, 219, 0.02)'] },
+            IXP: { primary: '#9f7aea', gradient: ['rgba(159, 122, 234, 0.3)', 'rgba(159, 122, 234, 0.1)', 'rgba(159, 122, 234, 0.02)'] },
+            FINX: { primary: '#ed8936', gradient: ['rgba(237, 137, 54, 0.3)', 'rgba(237, 137, 54, 0.1)', 'rgba(237, 137, 54, 0.02)'] },
+            ARKK: { primary: '#38b2ac', gradient: ['rgba(56, 178, 172, 0.3)', 'rgba(56, 178, 172, 0.1)', 'rgba(56, 178, 172, 0.02)'] }
         };
 
         Object.keys(weekData.investments).forEach(etf => {
@@ -649,6 +690,18 @@ class ETFCompetitionAnalyzer {
                     </ul>
                 `;
                 break;
+            case 'week5':
+                weekAnalysis = `
+                    <p>Week 5 delivered a solid ${this.formatPercentage(totalReturnPercent)} return with a balanced tech-focused portfolio strategy.</p>
+                    <ul>
+                        <li><strong>IXP:</strong> Global tech exposure led with 1.26% gain on international diversification</li>
+                        <li><strong>FINX:</strong> FinTech sector gained 0.43% on digital transformation trends</li>
+                        <li><strong>ARKK:</strong> Innovation ETF flat at -0.05%, showing market maturity</li>
+                        <li><strong>Balanced Approach:</strong> Diversified allocation across tech sub-sectors reduced risk</li>
+                        <li><strong>Consistent Performance:</strong> Steady gains demonstrate portfolio management skills</li>
+                    </ul>
+                `;
+                break;
         }
 
         analysisElement.innerHTML = weekAnalysis;
@@ -684,7 +737,10 @@ class ETFCompetitionAnalyzer {
             URA: gainPercent > 0 ? "Uranium sector benefited from nuclear energy revival trends" : "Regulatory uncertainty and supply chain issues affected uranium prices",
             BLCN: gainPercent > 0 ? "Blockchain technology adoption by institutions drove sector gains" : "Crypto market volatility and regulatory concerns weighed on blockchain stocks",
             IYW: gainPercent > 0 ? "Technology sector fundamentals supported broad-based gains" : "Tech sector rotation and valuation concerns created headwinds",
-            AIQ: gainPercent > 0 ? "AI sector momentum continued with enterprise adoption growth" : "AI bubble concerns and high valuations led to profit-taking"
+            AIQ: gainPercent > 0 ? "AI sector momentum continued with enterprise adoption growth" : "AI bubble concerns and high valuations led to profit-taking",
+            IXP: gainPercent > 0 ? "Global tech diversification across markets provided stability and growth" : "International tech sector faced headwinds from global economic uncertainty",
+            FINX: gainPercent > 0 ? "FinTech innovation and digital payment adoption drove sector performance" : "Regulatory concerns and interest rate pressures weighed on FinTech valuations",
+            ARKK: gainPercent > 0 ? "Disruptive innovation themes gained momentum in market recovery" : "High-growth innovation stocks faced valuation pressure and rotation concerns"
         };
         
         return insights[etf] || "Market conditions influenced performance during this period";

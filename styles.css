@@ -429,6 +429,7 @@ body {
 .week2-card:hover { border-color: #4299e1; }
 .week3-card:hover { border-color: #d69e2e; }
 .week4-card:hover { border-color: #e53e3e; }
+.week5-card:hover { border-color: #9f7aea; }
 
 .week-card h4 {
     font-size: 1.4rem;
